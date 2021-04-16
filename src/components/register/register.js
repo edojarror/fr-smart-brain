@@ -25,7 +25,9 @@ class Register extends React.Component {
         e.preventDefault(); 
         fetch('https://git.heroku.com/fast-brook-16183.git/register', {
             method: 'post',
-            headers: {"Content-Type": "application/json"},
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/vnd.heroku+json; version=3"},
             body: JSON.stringify({
                 name: this.state.name,
                 email: this.state.email,
