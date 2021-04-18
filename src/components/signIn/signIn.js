@@ -20,7 +20,7 @@ class SignIn extends React.Component {
 
     onSubmitSignIn = (e) => {
         e.preventDefault();
-        fetch('https://git.heroku.com/fast-brook-16183.git/signin', {
+        fetch('https://fast-brook-16183.git/signin', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({

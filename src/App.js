@@ -80,7 +80,7 @@ class App extends React.Component {
 
   onPictureSubmit = () => {
     this.setState({imageUrl: this.state.input})
-    fetch('https://git.heroku.com/fast-brook-16183.git/imageUrl', {
+    fetch('https://fast-brook-16183.git/imageUrl', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -90,7 +90,7 @@ class App extends React.Component {
     })
       .then(response => {
         if(response) {
-          fetch('https://git.heroku.com/fast-brook-16183.git/image', {
+          fetch('https://fast-brook-16183.git/image', {
             method: "put",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
