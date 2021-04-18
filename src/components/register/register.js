@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 
 class Register extends React.Component { 
     constructor(props) {
@@ -24,28 +23,6 @@ class Register extends React.Component {
     }
     onSubmitSignIn = (e) => {
         e.preventDefault(); 
-        // axios({
-        //     url: 'https://git.heroku.com/fast-brook-16183.git/register',
-        //     method: 'post',
-        //     data:  {
-        //         name: this.state.name,
-        //         email: this.state.email,
-        //         password: this.state.password
-        //     },
-        //     headers: {"Access-Control-Allow-Origin": "*"}
-        // })
-        // .then(function (response) {
-        //     response.json()
-        // })
-        // .then(user => {
-        //     if(user.id) {
-        //         this.props.loadUser(user)
-        //         this.props.onRouteChange("home");
-        //     }
-        // })
-        // .catch(function (error) {
-        //     console.log(error);
-        // });
         fetch('https://fast-brook-16183.herokuapp.com/register', {
             method: 'POST',
             headers: {

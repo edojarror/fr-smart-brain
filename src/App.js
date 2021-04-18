@@ -7,7 +7,6 @@ import Rank from './components/rank/rank';
 import ImageLinkForm from './components/imagelinkform/imagelinkform';
 import FaceRecognition from './components/facerecognition/facerecognition';
 import Particles from 'react-particles-js';
-import Clarifai from 'clarifai';
 import './App.css';
 
 const particlesOptions = {
@@ -85,26 +84,26 @@ class App extends React.Component {
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         input: this.state.input
-      })
-      .then(response => response.json())
+      }) 
     })
-      .then(response => {
-        if(response) {
-          fetch('https://fast-brook-16183.herokuapp.com/image', {
-            method: "put",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({
-              id: this.state.user.id
-            })
+    .then(response => response.json())
+    .then(response => {
+      if(response) {
+        fetch('https://fast-brook-16183.herokuapp.com/image', {
+          method: "put",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({
+            id: this.state.user.id
           })
-          .then(response => response.json())
-          .then(count => {
-            this.setState(Object.assign(this.state.user, {entries: count}))
-          })
-        }
-        this.displayFaceBox(this.calculateFaceLocation(response))
-      })  
-      .catch(err => console.log(err));
+        })
+        .then(response => response.json())
+        .then(count => {
+          this.setState(Object.assign(this.state.user, {entries: count}))
+        })
+      }
+      this.displayFaceBox(this.calculateFaceLocation(response))
+    })  
+    .catch(err => console.log(err));
   }
 
   onRouteChange = (route) => {
