@@ -24,30 +24,42 @@ class Register extends React.Component {
     }
     onSubmitSignIn = (e) => {
         e.preventDefault(); 
-        axios.post('https://git.heroku.com/fast-brook-16183.git/register', {
-            name: this.state.name,
-            email: this.state.email,
-            password: this.state.password
-        })
-            .then(function (response) {
-            console.log(response);
-        })
-            .catch(function (error) {
-            console.log(error);
-        });
-        // fetch('https://git.heroku.com/fast-brook-16183.git/register', {
-        //     method: 'POST',
-        //     // headers: {
-        //     //     "Content-Type": "application/json"
-        //     //     // 'Access-Control-Request-Method': 'POST',
-        //     //     // 'Origin': 'http://localhost:3000'
-        //     // },
-        //     body: JSON.stringify({
+        // axios({
+        //     url: 'https://git.heroku.com/fast-brook-16183.git/register',
+        //     method: 'post',
+        //     data:  {
         //         name: this.state.name,
         //         email: this.state.email,
         //         password: this.state.password
-        //     })
+        //     },
+        //     headers: {"Access-Control-Allow-Origin": "*"}
         // })
+        // .then(function (response) {
+        //     response.json()
+        // })
+        // .then(user => {
+        //     if(user.id) {
+        //         this.props.loadUser(user)
+        //         this.props.onRouteChange("home");
+        //     }
+        // })
+        // .catch(function (error) {
+        //     console.log(error);
+        // });
+        fetch('https://fast-brook-16183.herokuapp.com/register', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*"
+                // 'Access-Control-Request-Method': 'POST',
+                // 'Origin': 'http://localhost:3000'
+            },
+            body: JSON.stringify({
+                name: this.state.name,
+                email: this.state.email,
+                password: this.state.password
+            })
+        })
         .then(response => response.json())
         .then(user => {
             if(user.id) {
